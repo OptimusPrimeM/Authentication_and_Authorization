@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/operator/map';
+import { JwtHelper, tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {
@@ -29,7 +30,25 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    return false;
+    /*
+        let awtHelper = new JwtHelper();
+        let token = localStorage.getItem('token');
+    
+        console.log(`$token`);
+    
+        if (!token)
+          return false;
+    
+        let expirationDate = awtHelper.getTokenExpirationDate(token);
+        let isExpired = awtHelper.isTokenExpired(token);
+    
+        console.log(`Expration =  ${expirationDate} ,Is Expires = ${isExpired}`);
+    
+        return !isExpired;
+        */
+
+    // Easiest way to implement all of this code
+    return tokenNotExpired();
   }
 }
 
