@@ -5,8 +5,11 @@ export function fakeBackendFactory(
     backend: MockBackend, 
     options: BaseRequestOptions) {
         
-  let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik9wdG11cyBQcmltZSIsImlhdCI6MTUxNjIzOTAyMn0.xh672BjNiKFQypr-xjfA5N4xMVp9cScFYzVPUJU_TNE';
+  // let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik9wdG11cyBQcmltZSIsImlhdCI6MTUxNjIzOTAyMn0.xh672BjNiKFQypr-xjfA5N4xMVp9cScFYzVPUJU_TNE';
     
+  /*Token with admin*/ 
+  let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik9wdG11cyBQcmltZSIsImlhdCI6MTUxNjIzOTAyMiwiYWRtaW4iOnRydWV9.8v3cJLgB0-iqED-VCYD9GR53uAA6S7Dqxvo2QCtaNk0';
+
   backend.connections.subscribe((connection: MockConnection) => {
     // We are using the setTimeout() function to simulate an 
     // asynchronous call to the server that takes 1 second. 
