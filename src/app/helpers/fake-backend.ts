@@ -8,11 +8,11 @@ export function fakeBackendFactory(
   // let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik9wdG11cyBQcmltZSIsImlhdCI6MTUxNjIzOTAyMn0.xh672BjNiKFQypr-xjfA5N4xMVp9cScFYzVPUJU_TNE';
 
   /*Token with admin*/
-  let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik9wdG11cyBQcmltZSIsImlhdCI6MTUxNjIzOTAyMiwiYWRtaW4iOnRydWV9.8v3cJLgB0-iqED-VCYD9GR53uAA6S7Dqxvo2QCtaNk0';
+  // let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik9wdG11cyBQcmltZSIsImlhdCI6MTUxNjIzOTAyMiwiYWRtaW4iOnRydWV9.8v3cJLgB0-iqED-VCYD9GR53uAA6S7Dqxvo2QCtaNk0';
 
-  /*Token for normal  user
+  /*Token for normal  user*/
   let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik9wdG11cyBQcmltZSIsImlhdCI6MTUxNjIzOTAyMiwiYWRtaW4iOmZhbHNlfQ._gmfIjHGsAzLpSOJ5gZ2iIblo1diKX5KmiYKGRyph7k'
-  */
+  
   backend.connections.subscribe((connection: MockConnection) => {
     // We are using the setTimeout() function to simulate an 
     // asynchronous call to the server that takes 1 second. 
@@ -44,7 +44,10 @@ export function fakeBackendFactory(
       //
       if (connection.request.url.endsWith('/api/orders') &&
         connection.request.method === RequestMethod.Get) {
-        if (connection.request.headers.get('authorization') === 'Bearer' + token) {
+
+          console.log(connection.request.headers.get('authorization'));
+          console.log('Bearer' + token);
+        if (connection.request.headers.get('authorization') === 'Bearer ' + token) {
           connection.mockRespond(new Response(
             new ResponseOptions({ status: 200, body: [1, 2, 3] })
           ));

@@ -49,7 +49,16 @@ import { NoAccessComponent } from './no-access/no-access.component';
     fakeBackendProvider,
     MockBackend,
     BaseRequestOptions,
-    AuthGuard
+    AuthGuard, 
+    AuthHttp,
+    provideAuth({
+      headerName: 'Authorization',
+      headerPrefix: 'Bearer',
+      tokenName: 'token',
+      tokenGetter: (() => localStorage.getItem('token')),
+      globalHeaders: [{ 'Content-Type': 'application/json' }],
+      noJwtError: true
+  })
   ],
   bootstrap: [AppComponent]
 })
